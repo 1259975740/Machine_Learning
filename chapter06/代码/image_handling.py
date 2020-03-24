@@ -42,11 +42,9 @@ img_fea = img_rs.flatten()   #图像转特征
 """"彩色图像转特征"""
 img = cv2.imread('test.jpg',1)    #用三通道读取图像
 img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)   #将BGR编码转为RGB
-img_fea = []    
 channels = ["R","G","B"]
 for i, channel in enumerate(channels):    #遍历三个通道
     hist = cv2.calcHist([img],[i],None,[256],[0,256])  #计算频数分布
-    img_fea.extend(hist)    #赋值
     plt.plot(hist,color=channel,linewidth=(i+1)*2,label=channel) 
     #画出每个通道的频数分布
     plt.xlim([0,256])   #设置画图范围

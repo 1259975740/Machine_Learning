@@ -10,11 +10,10 @@ from sklearn import metrics    #导入sklearn指标包
 from sklearn import model_selection  #导入sklearn模型包
 from sklearn import linear_model     #导入sklearn线性模型包
 import matplotlib.pyplot as plt    #导入画图包pyplot，并更名为plt
-plt.style.use('ggplot')   #使用ggplot画图格式，以便用numpy数据格式画图
+plt.style.use('ggplot')   #使用网格格式画图
 
-
-#X1, Y1 = datasets.make_classification(n_samples=100,n_features=2, n_redundant=0, n_informative=2)
-#"""画图"""
+X1, Y1 = datasets.make_classification(n_samples=100,n_features=2, n_redundant=0, n_informative=2)
+"""画图"""
 plt.figure()
 blue = X1[Y1.ravel()==0]
 red = X1[Y1.ravel()==1]

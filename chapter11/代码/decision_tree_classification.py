@@ -27,6 +27,11 @@ print("模型在测试集中的精度为：",accuracy_score(y_test,y_test_pred))
 """画图"""
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt   
+font1 = {'family' : 'SimHei',
+'weight' : 'normal',
+'size'   : 16,
+}
 #解决中文显示问题
 plt.rcParams['font.sans-serif']=['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
@@ -42,10 +47,10 @@ for alpha in alphas:
 train_scores = [dtc.score(X_train, y_train) for dtc in dtcs]
 test_scores = [dtc.score(X_test, y_test) for dtc in dtcs]
 
-
+plt.figure(figsize=(12,4))
 plt.subplots_adjust(left=None, bottom=None, right=None, top=None,wspace=None, hspace=None)
 
-plt.subplot(2,1,1)
+plt.subplot(1,2,1)
 plt.xlabel(r"$\alpha_{cpp}$",fontsize=20)
 plt.ylabel("精确度",fontsize=16)
 plt.plot(alphas[:-1], train_scores[:-1], label="训练集",linestyle='dashed',
@@ -54,14 +59,14 @@ plt.plot(alphas[:-1], test_scores[:-1], label="测试集",
         drawstyle="steps-post")
 plt.xlim(0,0.03)
 plt.ylim(0.85,1.025)
-plt.legend()
+plt.legend(prop=font1)    #设置图例的格式
 
-plt.subplot(2,1,2)
+plt.subplot(1,2,2)
 plt.plot(alphas[:-1], node_num[:-1], drawstyle="steps-post")
 plt.xlabel(r"$\alpha_{ccp}$",fontsize=20)
 plt.ylabel("树的节点个数",fontsize=16)
 plt.xlim(0,0.03)
-plt.ylim(0.38)
+plt.ylim(0,38)
 plt.show()
 
 """可视化决策树"""

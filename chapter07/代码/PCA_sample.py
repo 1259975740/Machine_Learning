@@ -34,6 +34,7 @@ digits_PCA = pca.fit_transform(digits.data)   #进行PCA降维
 evr = pca.explained_variance_ratio_
 print(evr)    
 """画图7.12的代码"""
+plt.figure(figsize=(12,4))
 plt.subplots_adjust(left=0.125, bottom=None, right=0.9, top=None,
                 wspace=0.3, hspace=None)
 plt.subplot(1,2,1)

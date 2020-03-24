@@ -38,6 +38,7 @@ X,y = demo_data.data_generate()    #产生示例数据集
 lg = LogisticRegression()    #训练一个逻辑回归函数
 lg.fit(X,y)    #训练数据（这里不拆分数据集）
 """画出分类界限"""
+plt.figure(figsize=(12,4))
 plt.subplots_adjust(left=None, bottom=None, right=None, top=None,
                 wspace=0.3)    #设置制图之间的左右间距
 plt.rcParams['font.sans-serif']=['SimHei']    #画图时显示中文字体

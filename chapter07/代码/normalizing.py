@@ -24,18 +24,20 @@ scaler = StandardScaler()
 df_zscore = scaler.fit_transform(df)    #进行Zscore标准化
 df_zscore = pd.DataFrame(df_zscore, columns=['x1', 'x2', 'x3'])    #构成新的dataframe，以便观察。
 
-fig, (ax1, ax2) = plt.subplots(ncols=2)
+fig, (ax1, ax2) = plt.subplots(ncols=2,figsize=(11,4))
 """以下为画图代码"""
-ax1.set_title('Zscore标准化前')
+ax1.set_title('Zscore标准化前',fontsize=20)
 sns.kdeplot(df['x1'], ax=ax1,linestyle = '-')
 sns.kdeplot(df['x2'], ax=ax1,linestyle = '--')
 sns.kdeplot(df['x3'], ax=ax1,linestyle = ':')
-ax2.set_title('Zscore标准化后')
+plt.ylabel('频率',fontsize=20)
+ax2.set_title('Zscore标准化后',fontsize=20)
 sns.kdeplot(df_zscore['x1'], ax=ax2,linestyle = '-')
 sns.kdeplot(df_zscore['x2'], ax=ax2,linestyle = '--')
 sns.kdeplot(df_zscore['x3'], ax=ax2,linestyle = ':')
+plt.ylabel('频率',fontsize=20)
 plt.show()
-
+#
 """最大最小值标准化"""
 df = pd.DataFrame({
     # positive skew
@@ -51,12 +53,13 @@ df_minmax = scaler.fit_transform(df)    #进行最大最小值标准化
 df_minmax = pd.DataFrame(df_minmax, columns=['x1', 'x2', 'x3'])
 
 """以下为画图代码"""
-fig, (ax3, ax4) = plt.subplots(ncols=2)
-ax3.set_title('MinMax标准化前')
+fig, (ax3, ax4) = plt.subplots(ncols=2,figsize=(11,4))
+ax3.set_title('MinMax标准化前',fontsize=20)
 sns.kdeplot(df['x1'], ax=ax3,linestyle = '-')
 sns.kdeplot(df['x2'], ax=ax3,linestyle = '--')
 sns.kdeplot(df['x3'], ax=ax3,linestyle = ':')
-ax4.set_title('MinMax标准化后')
+plt.ylabel('频率',fontsize=20)
+ax4.set_title('MinMax标准化后',fontsize=20)
 sns.kdeplot(df_minmax['x1'], ax=ax4,linestyle = '-')
 sns.kdeplot(df_minmax['x2'], ax=ax4,linestyle = '--')
 sns.kdeplot(df_minmax['x3'], ax=ax4,linestyle = ':')

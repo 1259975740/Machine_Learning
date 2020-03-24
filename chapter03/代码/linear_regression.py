@@ -11,7 +11,6 @@ from sklearn import metrics    #导入sklearn指标包
 from sklearn import model_selection  #导入sklearn模型包
 from sklearn import linear_model     #导入sklearn线性模型包
 import matplotlib.pyplot as plt    #导入画图包pyplot，并更名为plt
-plt.style.use('ggplot')   #使用ggplot画图格式，以便用numpy数据格式画图
 boston = datasets.load_boston()    #导入boston数据集
 model = linear_model.LinearRegression()    #创建线性回归模型
 X_train,X_test,y_train,y_test = model_selection.train_test_split(
@@ -32,24 +31,31 @@ mse_test = metrics.mean_squared_error(y_test,y_test_pred)
 r2_test = metrics.r2_score(y_test,y_test_pred)
 print("测试集集MSE：%.3f\n测试集集R方：%.3f"%(mse_test,r2_test))
 
+"""设置"""
+font1 = {'family' : 'SimHei',
+'weight' : 'normal',
+'size'   : 16,
+}
+plt.rcParams['font.sans-serif']=['SimHei']    #画图时显示中文字体
+plt.rcParams['axes.unicode_minus'] = False
 """可视化评价指标"""
-plt.figure()    #创建画布
+plt.figure(figsize=(6,8))    #创建画布
 plt.subplot(211)    
-plt.plot(y_test,"-",linewidth=1,label='real value') #画出测试集实际数据点
-plt.plot(y_test_pred,"--",linewidth=1,label='fitted value') #画出测试集拟合数据点
-plt.legend(loc='best')  #设置标签位置
-plt.xlabel('test dataset points')   #设置X轴
-plt.ylabel('target y value')    #设置X轴
+plt.plot(y_test,"-",linewidth=1.5,label='实际值') #画出测试集实际数据点
+plt.plot(y_test_pred,"--",linewidth=1.5,label='预测值') #画出测试集拟合数据点
+plt.legend(loc='best',prop=font1)  #设置标签位置
+plt.xlabel('预测数据',fontsize=16)   #设置X轴
+plt.ylabel('实际数据',fontsize=16)    #设置X轴
 plt.subplot(212)
 plt.plot(y_test,y_test_pred,'o')    #以实际值为x轴，以预测值为y轴
 plt.plot([-10,60],[-10,60],'k--')   #画出对角线
 plt.axis([-10,60,-10,60])   #设置图形范围
-plt.xlabel('fitted value')   
-plt.ylabel('real value')
+plt.xlabel('预测值',fontsize=16)   
+plt.ylabel('实际值',fontsize=16)
 r2 = 'R$^2$ = %.3f' %r2_test
 mse = 'MSE = %.3f' %mse_test
-plt.text(-5,50,mse,fontsize=12) #画出左上角的文字
-plt.text(-5,35,r2,fontsize=12)
+plt.text(-5,50,mse,fontsize=16) #画出左上角的文字
+plt.text(-5,35,r2,fontsize=16)
 
 """Rigde回归"""
 model_rgd = linear_model.Ridge(alpha = 0.5)     #使用Ridge回归模型，设置alpha为0.5

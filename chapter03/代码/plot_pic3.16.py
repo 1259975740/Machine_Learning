@@ -11,7 +11,7 @@ from sklearn import metrics    #导入sklearn指标包
 from sklearn import model_selection  #导入sklearn模型包
 from sklearn import linear_model     #导入sklearn线性模型包
 import matplotlib.pyplot as plt    #导入画图包pyplot，并更名为plt
-plt.style.use('ggplot')   #使用ggplot画图格式，以便用numpy数据格式画图
+#plt.style.use('ggplot')   #使用ggplot画图格式，以便用numpy数据格式画图
 
 plt.figure()
 X1, Y1 = datasets.make_blobs(n_samples=100,n_features=2, centers=2)

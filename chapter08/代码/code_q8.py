@@ -15,7 +15,7 @@ sources = [
         ('SH.tar.gz',SPAM)]
 """函数说明：def extract_tar函数用于解压某个tar.gz的压缩文件。"""
 def extract_tar(datafile,extractdir):   #定义一个解压缩函数
-    tar = tarfile.open(datafile)   #加压缩文件datafile
+    tar = tarfile.open(datafile)   #解压缩文件datafile
     tar.extractall(path=extractdir)   #文件解压到 extractdir
     tar.close()
     print("%s 解压完成."%datafile)

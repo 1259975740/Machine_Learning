@@ -14,6 +14,7 @@ plt.rcParams['axes.unicode_minus'] = False
 X,y = make_circles(n_samples=500,random_state=1,noise=0.1,factor=0.1)   #产生线性不可分的分类数据集
 
 """画出图7.13的代码"""
+plt.figure(figsize=(12,4))
 plt.subplot(1,2,1)
 plt.scatter(X[y==0,0],X[y==0,1],marker='x',color='black',s=50)
 plt.scatter(X[y==1,0],X[y==1,1],marker='o')
@@ -34,8 +35,9 @@ plt.scatter(X_pca[y==0],np.zeros((250,1))+0.05,marker='x',color='black',alpha=0.
 plt.scatter(X_pca[y==1],np.zeros((250,1))-0.05,marker='o')
 plt.xlabel(u'降维后',fontsize=20)
 
-
+#
 """画出图7.15的代码"""
+plt.figure(figsize=(14,4))
 plt.subplot(1,3,1)
 plt.scatter(X[y==0,0],X[y==0,1],marker='x',color='black',s=50)
 plt.scatter(X[y==1,0],X[y==1,1],marker='o')

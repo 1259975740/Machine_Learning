@@ -31,13 +31,19 @@ for alpha in alphas:
 train_R2 = [r2_score(y_train,dtr.predict(X_train)) for dtr in dtrs]  #求出每一个决策树模型在训练集中的R方，并顺序存放在一个列表中，下同
 test_R2 = [r2_score(y_test,dtr.predict(X_test)) for dtr in dtrs]
 """画出图像"""
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt   
+font1 = {'family' : 'SimHei',
+'weight' : 'normal',
+'size'   : 16,
+}
 plt.xlabel(r"$\alpha_{cpp}$",fontsize=20)
 plt.ylabel(r"$R^2$",fontsize=16)
 plt.plot(alphas, train_R2, label="训练集",
         linestyle = 'dashed',drawstyle="steps-post")
 plt.plot(alphas, test_R2, label="测试集",
         drawstyle="steps-post")
-plt.legend()   #显示图例
+plt.legend(prop=font1)   #显示图例
 """决策树可视化----输出PDF文件"""
 #import os    
 #os.environ["PATH"] += os.pathsep + r'E:\Anaconda\release\bin'  #注意修改你的路径
