@@ -13,7 +13,7 @@ sources = [
         ('BG.tar.gz',SPAM),
         ('GP.tar.gz',SPAM),
         ('SH.tar.gz',SPAM)]
-"""函数说明：def extract_tar函数用于解压某个tar.gz的压缩文件。"""
+"""函数说明：extract_tar函数用于解压某个tar.gz的压缩文件。"""
 def extract_tar(datafile,extractdir):   #定义一个解压缩函数
     tar = tarfile.open(datafile)   #解压缩文件datafile
     tar.extractall(path=extractdir)   #文件解压到 extractdir
@@ -35,11 +35,11 @@ def read_single_file(filename):
         f = open(filename,encoding='utf-8')    #用utf-8编码方式打开
         for line in f:
             if past_header:
-                lines.append(line)
+                lines.append(line)    #一行一行地读取文件内容
             elif line == '\n':
                 past_header = True
         f.close()
-    content = '\n'.join(lines)    #整合成一个字符串
+    content = '\n'.join(lines)    #将行lines用回车合成后，读入一个大“字符串“中
     return filename, content
 def read_files(path):
     for root,dirname,filenames in os.walk(path):   #不断进入文件夹，直到“遇到”单一文件

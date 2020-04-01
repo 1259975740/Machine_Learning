@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 img = cv2.imread('test.jpg',0)    #用灰度通道读取图像
 
+"""提示：运行时可以将不需要的部分注释掉，并调整画图代码的参数显示图像"""
+
 """核处理"""
 kernels = np.array([[0.0625,0.125,0.0625],
                     [0.125,0.25,0.125],
@@ -52,7 +54,21 @@ plt.legend()    #显示图例
 plt.show()
 observation = np.array(img_fea).flatten()    #转为个体
 
-#"""关键点检测"""
+
+"""设置HOGf法参数"""
+dect_win_size = (64,128)    #设置检测窗口的尺寸为64X128，即包含64X128个像素
+block_size = (16,16)    #定义块的大小为16X16
+cell_size = (8,8)    #定义胞元的大小为8X8，即块中包含4个胞元
+win_stride = (64,64)    #定义窗口的滑动步长为：宽度方向64，长度方向64
+block_stride = (8,8)    #定义块的滑动步长为：宽度方向8，长度方向8，即窗口之间存在两个重叠的胞元
+bins = 9    #定义直方图柱数为9，即将圆拆分成9等块供像素投影
+"""使用HOG法将图像转换为向量"""
+hog = cv2.HOGDescriptor(dect_win_size,block_size,block_stride,
+                        cell_size,bins)    #生成一个HOG对象，并设置参数
+img_fea_hog = hog.compute(img,win_stride)    #用HOG法将图像转换为特征
+print(img_fea_hog)    #输出特征向量
+print(img_fea_hog.shape)    #输出特征向量的长度
+
 """显示图像"""
 plt.imshow(img,cmap="gray"),plt.axis('off')    #使用plt库打开
 plt.show()

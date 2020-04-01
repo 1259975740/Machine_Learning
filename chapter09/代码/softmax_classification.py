@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits    #导入数据集MINIST
 digits = load_digits()    #导入数据集
 digits.images.shape    #查看图像的像素大小
-#画出前十幅图，并
+#画出前十幅图
 fig, axes = plt.subplots(5,5, figsize=(8, 8),subplot_kw={'xticks':[], 'yticks':[]},
                         gridspec_kw=dict(hspace=0.1, wspace=0.1))
 for i, ax in enumerate(axes.flat):
