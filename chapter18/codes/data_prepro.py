@@ -12,19 +12,21 @@ from sklearn.decomposition import PCA
 
 def data_generate_final():
     waste_df,_ = data_generate()    #导入数据集
-    y_cod = np.array(waste_df['出水COD'])    #提出输出因变量
+    y_cod = np.array(waste_df['产出COD'])    #提出输出因变量
     y_cod_rate = np.array(waste_df['COD去除率 %'])
-    y_vfa = np.array(waste_df['出水VFA'])
+    y_vfa = np.array(waste_df['产出VFA'])
     X = waste_df.iloc[:,[1,2,3,4,5,6,7,8,9,13,14,15,16]]    #提取出输入特征
     pca = PCA(n_components=7)    #指定d=7的PCA类
     X_PCA = pca.fit_transform(X)   #进行PCA降维
     return X_PCA,y_cod,y_cod_rate,y_vfa
 
-def main():
+
+    
+if __name__ == '__main__':  # 主函数入口
     waste_df,_ = data_generate()    #导入数据集
-    y_cod = waste_df['出水COD']    #提出因变量
+    y_cod = waste_df['产出COD']    #提出因变量
     y_cod_rate = waste_df['COD去除率 %']
-    y_vfa = waste_df['出水VFA']
+    y_vfa = waste_df['产出VFA']
     X = waste_df.iloc[:,[1,2,3,4,5,6,7,8,9,13,14,15,16]]    #提取出输入特征
     pca = PCA(n_components=7)    #指定d=7的PCA类
     X_PCA = pca.fit_transform(X)   #进行PCA降维
@@ -52,11 +54,6 @@ def main():
     plt.axis([0,8,0,1])
     plt.xlabel(u'特征',fontsize=20)
     plt.ylabel(u'累计贡献',fontsize=20)
-    return waste_df,X_PCA,y_cod,y_cod_rate,y_vfa
-
-    
-if __name__ == '__main__':  # 主函数入口
-    waste_df,X_PCA,y_cod,y_cod_rate,y_vfa = main()
 
     
 

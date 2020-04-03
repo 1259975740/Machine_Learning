@@ -6,7 +6,7 @@ Created on Thu Apr  2 19:05:35 2020
 """
 from load_dataset import data_generate
 _,waste_df_before = data_generate()    #导入去除缺失值、异常值、没有经过标准化的数据
-X = waste_df_before[['COD去除率 %','出水VFA','反应器的ph']]    #提取三个用于聚类的特征
+X = waste_df_before[['COD去除率 %','产出VFA','反应器的ph']]    #提取三个用于聚类的特征
 
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
