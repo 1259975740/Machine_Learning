@@ -52,20 +52,18 @@ vectorizer = TfidfVectorizer()    #导入Tfidf方法模型
 X_train = vectorizer.fit_transform(X_train).todense()
 X_test = vectorizer.transform(X_test).todense()
 
-from sklearn.naive_bayes import MultinomialNB		#引入朴素贝叶斯分类器包
-NB = MultinomialNB()    #导入多项式贝叶斯分类器
+from sklearn.naive_bayes import MultinomialNB    #引入朴素贝叶斯分类器模块
+NB = MultinomialNB(alpha=1)    #导入多项式贝叶斯分类器，拉普拉斯修正系数为1
 NB.fit(X_train,y_train)    #训练模型
 y_train_pred = NB.predict(X_train)		#使用训练好的分类器对训练样本进行预测
 y_test_pred = NB.predict(X_test)	#使用分类器对测试样本进行预测
 
 from sklearn.metrics import classification_report , accuracy_score	#引入评价用包
-#输出训练集、测试集的混淆矩阵、精度和结果摘要
+#输出训练集、测试集的精度和结果摘要
 print('训练集结果报表')
 print(classification_report(y_train,y_train_pred))
-print('训练集中的精度为： ',accuracy_score(y_train,y_train_pred))
 print('测试集结果报表')
 print(classification_report(y_test,y_test_pred))
-print('测试集集中的精度为： ',accuracy_score(y_test,y_test_pred))
 
 
 

@@ -16,7 +16,7 @@ X_train,X_test,y_train,y_test = train_test_split(X_pca,y_cod,test_size=0.3,rando
 ANN = Sequential()    #定义一个sequential类，以便构造神经网络
 ANN.add(Dense(units=256,activation='relu',input_shape=(7,)))    #构造第一层隐藏层，第一层隐藏层需要input_shape，用来设置输入层的神经元个数。
 ANN.add(Dropout(0.15))    #节点的Dropout正则化，Dropout比例为15%
-ANN.add(Dense(units=128,activation='linear',input_shape=(7,)))    #第二次隐藏层，神经元个数为128，设置激活函数为线性函数
+ANN.add(Dense(units=128,activation='linear'))    #第二次隐藏层，神经元个数为128，设置激活函数为线性函数
 ANN.add(Dropout(0.15))
 ANN.add(Dense(units=64,activation='relu'))    
 ANN.add(Dropout(0.15))

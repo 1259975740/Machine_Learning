@@ -28,7 +28,6 @@ fig, axes = plt.subplots(5,5, figsize=(8, 8),subplot_kw={'xticks':[], 'yticks':[
                         gridspec_kw=dict(hspace=0.1, wspace=0.1))
 for i, ax in enumerate(axes.flat):
     ax.imshow(images[i], cmap='gray', interpolation='nearest')
-    ax.text(0.07, 0.07, str(label[i]),transform=ax.transAxes, color='white')
 
 
 

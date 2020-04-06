@@ -58,7 +58,7 @@ ANN.add(Dense(units=64,activation='relu'))    #第三层隐藏层
 ANN.add(Dense(units=2,activation='sigmoid'))    #输出层，units即节点个数必须等于向量y的元素个数
 ANN.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 #使用adam作为参数的搜索算法，设置交叉熵作为风险函数（极大似然法），同时使用精确度作为度量模型拟合优度的指标
-ANN.fit(X_train,y_train,epochs=500,batch_size=50,validation_data=(X_test,y_test))
+ANN.fit(X_train,y_train,epochs=200,batch_size=50,validation_data=(X_test,y_test))
 #对模型进行训练，最大迭代步数为500，随机搜索算法的mini-batch为50，同时每一次迭代用测试集进行一次模型评价
     
 """画出分类界限"""
@@ -68,5 +68,27 @@ plt.xlabel(r'$x_1$',fontsize=16)
 plt.ylabel(r'$x_2$',fontsize=16)
 plot_boundary(ANN,X,y)
 
-from keras.utils import plot_model
-plot_model(ANN,to_file='12.6.png',show_shapes=True)    #可视化神经网络模型ANN
+"""keras模块与sklearn的交互"""
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.metrics import make_scorer,accuracy_score
+from sklearn.model_selection import GridSearchCV
+def create_network():    #定义网络构建函数
+    ANN = Sequential()    #定义一个sequential类，以便构造神经网络
+    ANN.add(Dense(units=64,activation='relu',input_shape=(2,)))    #构造第一层隐藏层，第一层隐藏层需要input_shape，用来设置输入层的神经元个数。
+    ANN.add(Dense(units=64,activation='relu'))    #第二次隐藏层，神经元个数为64
+    ANN.add(Dense(units=64,activation='relu'))    #第三层隐藏层
+    ANN.add(Dense(units=1,activation='sigmoid'))    #输出层，units即节点个数必须等于向量y的元素个数
+    ANN.compile(optimizer='adam',loss='binary_crossentropy')
+    #使用adam作为参数的搜索算法，设置交叉熵作为风险函数（极大似然法）
+    return ANN
+grid = {'batch_size':[50,75,100,125,150]}    #构造参数网格
+ANN = KerasClassifier(build_fn=create_network,epochs=200)    
+acc_scorer = make_scorer(accuracy_score)    #作为网格寻优的参数之一
+grid_search = GridSearchCV(ANN,param_grid=grid,cv=5,scoring=acc_scorer)
+grid_search.fit(X,y)   #进行网格寻优
+print(grid_search.best_params_)    #输出最优的参数对
+
+
+
+# from keras.utils import plot_model
+# plot_model(ANN,to_file='12.6.png',show_shapes=True)    #可视化神经网络模型ANN
