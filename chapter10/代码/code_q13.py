@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 import os
 os.getcwd() #获取当前工作目录
-os.chdir('D:\桌面\我的书\chapter06\数据集')    #修改工作路径
+os.chdir('D:\桌面\我的书\chapter06\数据集')    #注意修改工作路径
 images = []
 data = np.empty([110, 100], np.float32)
 for idx in range(110):
@@ -35,8 +35,9 @@ for i, ax in enumerate(axes.flat):
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(
         data,labels,test_size=0.1,random_state=1)    #拆分数据
+
 from sklearn.svm import SVC
-svc = SVC()
+svc = SVC(C=1.0,kernel='rbf')
 svc.fit(X_train,y_train)
 from sklearn.metrics import accuracy_score	#引入评价用包
 y_train_pred = svc.predict(X_train)

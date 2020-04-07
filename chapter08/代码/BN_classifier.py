@@ -43,8 +43,8 @@ data = []			#生成预处理后的数据集
 for i in smsdata_data:		#对每一份邮件，均进行预处理并输出
     data.append(preprocessing(i))
     
-from sklearn import model_selection
-X_train,X_test,y_train,y_test = model_selection.train_test_split(data
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test = train_test_split(data
         ,labels,test_size=0.3,random_state=1)    #按7：3拆分数据集
 
 from sklearn.feature_extraction.text import TfidfVectorizer    #导入相应的包

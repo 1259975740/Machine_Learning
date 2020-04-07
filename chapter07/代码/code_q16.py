@@ -18,4 +18,5 @@ model = LogisticRegression()
 from sklearn.feature_selection import RFECV
 rfecv = RFECV(estimator=model,scoring='neg_mean_squared_error')
 rfecv.fit(test_df,target)
-new_df = rfecv.transform(test_df)
+col_name = df.columns.values.tolist()
+new_data = rfecv.transform(test_df)    #过滤后

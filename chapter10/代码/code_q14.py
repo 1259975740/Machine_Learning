@@ -102,3 +102,25 @@ def data_generate():
         ax.imshow(X_train[i], cmap='gray', interpolation='nearest')
         ax.text(0.07, 0.07, str(y_train[i]),transform=ax.transAxes, color='white')
     return X_train,y_train,X_test,y_test
+
+
+ """参考答案"""
+X_train,y_train,X_test,y_test = data_generate()
+def flatten_img(X):
+    X_new = []
+    for i in range(0,X.shape[0]):
+        x = X[i].flatten()
+        X_new.append(x)
+    return X_new
+X_train = flatten_img(X_train)/255
+X_test = flatten_img(X_test)/255
+
+    
+from sklearn.svm import SVC
+svc = SVC(C=1.0,kernel='rbf',decision_function_shape='ovr')
+svc.fit(X_train,y_train)
+from sklearn.metrics import accuracy_score	#引入评价用包
+y_train_pred = svc.predict(X_train)
+y_test_pred = svc.predict(X_test)
+print('训练集中的精确度为',accuracy_score(y_train,y_train_pred))
+print('测试集中的精确度为',accuracy_score(y_test,y_test_pred))

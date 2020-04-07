@@ -19,3 +19,9 @@ plt.axis([0,4,0,4])
 plt.xlabel(u'feature 1')
 plt.ylabel(u'feature 2')
 plt.plot(X[:,0],X[:,1],'.',MarkerSize=10)
+
+"""参考答案"""
+from sklearn.cluster import KMeans
+km = KMeans(n_clusters=2)
+km.fit(X)
+labels = km.predict(X)    #返回各个个体的所属簇，详细内容将在第十六章讨论

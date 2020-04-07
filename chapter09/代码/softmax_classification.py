@@ -8,13 +8,13 @@ Created on Sat Mar  7 10:50:54 2020
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits    #导入数据集MINIST
 digits = load_digits()    #导入数据集
-digits.images.shape    #查看图像的像素大小
-#画出前十幅图
-fig, axes = plt.subplots(5,5, figsize=(8, 8),subplot_kw={'xticks':[], 'yticks':[]},
-                        gridspec_kw=dict(hspace=0.1, wspace=0.1))
-for i, ax in enumerate(axes.flat):
-    ax.imshow(digits.images[i], cmap='gray', interpolation='nearest')
-    ax.text(0.07, 0.07, str(digits.target[i]),transform=ax.transAxes, color='white')
+print(digits.images.shape)    #查看图像的像素大小
+# #画出前十幅图
+# fig, axes = plt.subplots(5,5, figsize=(8, 8),subplot_kw={'xticks':[], 'yticks':[]},
+#                         gridspec_kw=dict(hspace=0.1, wspace=0.1))
+# for i, ax in enumerate(axes.flat):
+#     ax.imshow(digits.images[i], cmap='gray', interpolation='nearest')
+#     ax.text(0.07, 0.07, str(digits.target[i]),transform=ax.transAxes, color='white')
     
 from sklearn.decomposition import PCA
 pca = PCA(n_components=30)    #指定d=30的PCA类
