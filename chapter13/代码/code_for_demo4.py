@@ -27,15 +27,15 @@ print('测试集的R方为：',r2_score(y_test,y_test_pred))
 
 
 import matplotlib.pyplot as plt   
-font1 = {'family' : 'Times New Roman',
+font1 = {'family' : 'SimHei',
 'weight' : 'normal',
 'size'   : 16,
 }
 plt.figure(figsize=(6,4))
 plt.rcParams['font.sans-serif']=['SimHei']    #画图时显示中文字体
 plt.rcParams['axes.unicode_minus'] = False
-plt.plot(y,label='Observed',linewidth=2)
-plt.plot(stacking.predict(X),linestyle='dashed',label='Predicted',linewidth=4)
+plt.plot(y,label='观测数据',linewidth=2)
+plt.plot(stacking.predict(X),linestyle='dashed',label='拟合曲线',linewidth=4)
 plt.xlabel(r'$x$',fontsize=20)
 plt.ylabel(r'$y$',fontsize=24)
 plt.legend(prop=font1)
