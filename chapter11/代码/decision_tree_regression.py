@@ -37,7 +37,7 @@ font1 = {'family' : 'SimHei',
 'weight' : 'normal',
 'size'   : 16,
 }
-plt.xlabel(r"$\alpha_{cpp}$",fontsize=20)
+plt.xlabel(r"$\alpha_{\mathrm{cpp}}$",fontsize=20)
 plt.ylabel(r"$R^2$",fontsize=16)
 plt.plot(alphas, train_R2, label="训练集",
         linestyle = 'dashed',drawstyle="steps-post")

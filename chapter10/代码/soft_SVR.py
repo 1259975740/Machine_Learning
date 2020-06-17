@@ -12,10 +12,12 @@ y = np.zeros(l)
 for i in range(0,l):
     y[i] = 2*x[i]**3+3*x[i]**2+x[i]+1.5+np.random.uniform(-6,4)
     
-#import matplotlib.pyplot as plt    画图代码
-#plt.scatter(x,y,s=15)
-#plt.xlabel('x')
-#plt.ylabel('y')
+import matplotlib.pyplot as plt    #画图代码
+plt.figure(figsize=(12,4))
+plt.subplot(1,2,1)
+plt.scatter(x,y,s=15)
+# plt.xlabel(r'$x$',fontsize=24)
+# plt.ylabel(r'$y$',fontsize=24)
 
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,random_state=1)    #拆分数据
@@ -29,6 +31,9 @@ from sklearn.metrics import r2_score
 print('模型训练集的R方为：',r2_score(y_train,y_train_pred))   #计算并输出训练集中的R方
 print('模型测试集的R方为：',r2_score(y_test,y_test_pred))
 
-
-#y_pred = svr.predict(x);    #画出带超平面
-#plt.plot(x,y_pred)
+plt.subplot(1,2,2)
+y_pred = svr.predict(x);    #画出带超平面
+plt.scatter(x,y,s=15)
+plt.plot(x,y_pred)
+# plt.xlabel(r'$x$',fontsize=24)
+# plt.ylabel(r'$y$',fontsize=24)

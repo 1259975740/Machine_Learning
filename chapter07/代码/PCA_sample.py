@@ -16,8 +16,8 @@ cov = [[5,0],[25,25]]
 x1,x2 = np.random.multivariate_normal(mean,cov,800).T    #产生示例数据
 plt.plot(x1,x2,'o',MarkerSize=3)
 plt.axis([0,40,0,40])
-plt.xlabel(u'特征1')
-plt.ylabel(u'特征2')
+plt.xlabel(u'特征1',fontsize=20)
+plt.ylabel(u'特征2',fontsize=20)
 X = np.vstack((x1,x2)).T    #构建一个数据矩阵
 mu,eig = np.linalg.eig(np.dot(X.T,X))    #求出特征值和特征向量
 plt.quiver(mean[0],mean[1],eig[:,0],eig[0,1],units='xy',zorder=3,scale=0.2)
@@ -40,14 +40,14 @@ plt.subplots_adjust(left=0.125, bottom=None, right=0.9, top=None,
 plt.subplot(1,2,1)
 plt.bar(range(1,len(evr)+1),evr)   #画出贡献图
 plt.axis([0,31,0,0.15])
-plt.xlabel(u'特征x',fontsize=20)
-plt.ylabel(u'贡献',fontsize=20)
+plt.xlabel(r'特征$x$',fontsize=20)
+plt.ylabel(r'贡献',fontsize=20)
 evr_sum = evr.copy()
 for i in range(1,len(evr)):
     evr_sum[i] = evr_sum[i-1]+evr_sum[i]
 plt.subplot(1,2,2)
 plt.bar(range(1,len(evr_sum)+1),evr_sum)   #画出贡献图
 plt.axis([0,31,0,1])
-plt.xlabel(u'特征x',fontsize=20)
-plt.ylabel(u'累计贡献',fontsize=20)
+plt.xlabel(r'特征$x$',fontsize=20)
+plt.ylabel(r'累计贡献',fontsize=20)
 

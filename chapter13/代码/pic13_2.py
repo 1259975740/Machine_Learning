@@ -45,7 +45,8 @@ plt.plot(x,y_pred)
 from sklearn.tree import DecisionTreeRegressor
 dtr2 = DecisionTreeRegressor(random_state=2,max_leaf_nodes=10)
 dtr2.fit(x_train,y_train)
-plt.xlabel('x',fontsize=20)
+plt.ylabel(r'$y$',fontsize=20)
+
 y_pred = dtr2.predict(x);    
 plt.legend(prop=font1)
 plt.plot(x,y_pred,linestyle='dashed',linewidth=5)
@@ -54,7 +55,7 @@ plt.plot(x,y_pred,linestyle='dashed',linewidth=5)
 from sklearn.tree import DecisionTreeRegressor
 dtr3 = DecisionTreeRegressor(random_state=3,max_depth=3)
 dtr3.fit(x_train,y_train)
-plt.xlabel('x',fontsize=20)
+plt.xlabel(r'$x$',fontsize=20)
 y_pred = dtr3.predict(x);    
 plt.legend(prop=font1)
 plt.plot(x,y_pred,linestyle='--',linewidth=4)

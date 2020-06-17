@@ -22,12 +22,12 @@ font1 = {'family' : 'SimHei',
 'weight' : 'normal',
 'size'   : 16,
 }
-plt.figure(figsize=(12,6))
+plt.figure(figsize=(12,4))
 plt.subplot(1,2,1)
 plt.scatter(X_train, y_train,s=16,label='训练集')
 plt.scatter(X_test, y_test, marker='x',s=40,label='测试集')
-plt.xlabel('x',fontsize=16)
-plt.ylabel('y',fontsize=16)
+plt.xlabel(r'$x$',fontsize=20)
+plt.ylabel(r'$y$',fontsize=20)
 plt.legend(prop=font1)
 
 lr = LinearRegression()
@@ -53,8 +53,8 @@ plt.plot(x_plot,y,linestyle=':',linewidth=3,label='ElasticNet回归',c='k')
 plt.legend(prop=font1)
 plt.scatter(X_train, y_train,s=16)
 plt.scatter(X_test, y_test, marker='x',s=40)
-plt.xlabel('x',fontsize=16)
-plt.ylabel('y',fontsize=16)
+plt.xlabel(r'$x$',fontsize=20)
+plt.ylabel(r'$y$',fontsize=20)
 plt.show()
 
 
